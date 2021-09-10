@@ -8,7 +8,7 @@ import java.util.Objects;
  * @author Jaden Abrams
  *
  */
-public abstract class Activity {
+public abstract class Activity implements Conflict{
 
 	/** Upper limit for the hour part of how long a Course is. */
 	private static final int UPPER_HOUR = 24;
@@ -206,6 +206,12 @@ public abstract class Activity {
 		return result;
 	}
 	
+	@Override
+	public void checkConflict(Activity possibleConflictingActivity) throws ConflictException {
+		// TODO Auto-generated method stub
+		
+	}
+
 	/**
 	 * Checks if 2 activities are the same
 	 * @param activity the activity to compare
