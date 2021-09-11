@@ -190,7 +190,7 @@ public abstract class Activity implements Conflict {
 				result = result + endHour;
 			}
 			result = result + ":" + endMinute;
-			if (endMinute % 10 == 0) {
+			if (endMinute == 0) {
 				result = result + "0";
 			}
 			if (endHour == 12) {
