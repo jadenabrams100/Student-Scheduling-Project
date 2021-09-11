@@ -176,7 +176,11 @@ public abstract class Activity implements Conflict {
 	
 		} else {
 			startHour = startHour - 12;
-			result = result + startHour + ":" + startMinute + "PM-";
+			result = result + startHour + ":" + startMinute;
+			if(startMinute == 0) {
+				result = result + "0";
+			}
+			result = result + "PM-";
 		}
 	
 		if (endHour < 13) {
