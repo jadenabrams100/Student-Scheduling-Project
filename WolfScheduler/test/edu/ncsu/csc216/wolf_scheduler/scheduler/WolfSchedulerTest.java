@@ -13,7 +13,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.ncsu.csc216.wolf_scheduler.course.Activity;
-import edu.ncsu.csc216.wolf_scheduler.course.ConflictException;
 import edu.ncsu.csc216.wolf_scheduler.course.Course;
 
 /**
