@@ -8,7 +8,7 @@ import java.util.Objects;
  * @author Jaden Abrams
  *
  */
-public abstract class Activity implements Conflict{
+public abstract class Activity implements Conflict {
 
 	/** Upper limit for the hour part of how long a Course is. */
 	private static final int UPPER_HOUR = 24;
@@ -205,10 +205,30 @@ public abstract class Activity implements Conflict{
 		}
 		return result;
 	}
-	
+	/**
+	 * Checks if 2 activities have conflicting times (ie they happen at the same time)
+	 * The method checks through the meeting days to see if they share a common meeting day.
+	 * It then goes through each minute of the day to see if both events are happening at that
+	 * specific time. If they are at that time, the method throws a ConflictException.
+	 * @throws ConflictException if the activities have conflicting activities
+	 */
 	@Override
 	public void checkConflict(Activity possibleConflictingActivity) throws ConflictException {
-		// TODO Auto-generated method stub
+		String firstMeetingDays = this.getMeetingDays();
+		String secondMeetingDays = possibleConflictingActivity.getMeetingDays();
+		String[] allDays = {"U", "M", "T", "W", "H", "F", "S"};
+		for(int i = 0; i < allDays.length; i++) {
+			if(firstMeetingDays.contains(allDays[i])
+					&& secondMeetingDays.contains(allDays[i])) {
+				for(int min = 0; min < 2400; min++) {
+					if((this.getStartTime() <= min && this.getEndTime() >= min)
+							&& (possibleConflictingActivity.getStartTime() <= min && possibleConflictingActivity.getEndTime() >= min)) {
+						throw new ConflictException();
+					}
+						
+				}
+			}
+		}
 		
 	}
 

@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 /**
+ * Contains all necessary tests to ensure Activity is fully functional
  * @author Jaden Abrams
  *
  */
