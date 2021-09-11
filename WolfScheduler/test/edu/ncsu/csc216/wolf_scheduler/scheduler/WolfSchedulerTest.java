@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.ncsu.csc216.wolf_scheduler.course.Activity;
+import edu.ncsu.csc216.wolf_scheduler.course.ConflictException;
 import edu.ncsu.csc216.wolf_scheduler.course.Course;
 
 /**
@@ -320,8 +321,8 @@ public class WolfSchedulerTest {
 		assertTrue(ws.addCourseToSchedule(NAME, SECTION));
 		assertTrue(ws.addCourseToSchedule("CSC 226", "001"));
 		ws.addEventToSchedule("Lunch", "MWF", 1200, 1300, "Food");
-		assertTrue(ws.addCourseToSchedule("CSC 116", "002"));
-		
+		Exception e1 = assertThrows(IllegalArgumentException.class, () -> ws.addCourseToSchedule("CSC 116", "002"));
+		assertEquals("The course cannot be added due to a conflict.", e1.getMessage());
 		String [][] schedule = ws.getScheduledActivities();
 		//Row 1
 		assertEquals("CSC 216", schedule[0][0]);
@@ -338,11 +339,7 @@ public class WolfSchedulerTest {
 		assertEquals("", schedule[2][1]);
 		assertEquals("Lunch", schedule[2][2]);
 		assertEquals("MWF 12:00PM-1:00PM", schedule[2][3]);
-		//Row 3
-		assertEquals("CSC 116", schedule[3][0]);
-		assertEquals("002", schedule[3][1]);
-		assertEquals("Intro to Programming - Java", schedule[3][2]);
-		assertEquals("MW 11:20AM-1:10PM", schedule[3][3]);
+		
 	}
 	
 	/**
@@ -357,7 +354,8 @@ public class WolfSchedulerTest {
 		assertTrue(ws.addCourseToSchedule(NAME, SECTION));
 		assertTrue(ws.addCourseToSchedule("CSC 226", "001"));
 		ws.addEventToSchedule("Lunch", "MWF", 1200, 1300, "Food");
-		assertTrue(ws.addCourseToSchedule("CSC 116", "002"));
+		Exception e1 = assertThrows(IllegalArgumentException.class, () -> ws.addCourseToSchedule("CSC 116", "002"));
+		assertEquals("The course cannot be added due to a conflict.", e1.getMessage());
 		
 		String [][] schedule = ws.getFullScheduledActivities();
 		//Row 1
@@ -384,14 +382,7 @@ public class WolfSchedulerTest {
 		assertEquals("", schedule[2][4]);
 		assertEquals("MWF 12:00PM-1:00PM", schedule[2][5]);
 		assertEquals("Food", schedule[2][6]);
-		//Row 3
-		assertEquals("CSC 116", schedule[3][0]);
-		assertEquals("002", schedule[3][1]);
-		assertEquals("Intro to Programming - Java", schedule[3][2]);
-		assertEquals("3", schedule[3][3]);
-		assertEquals("spbalik", schedule[3][4]);
-		assertEquals("MW 11:20AM-1:10PM", schedule[3][5]);
-		assertEquals("", schedule[1][6]);
+		
 	}
 	
 	/**
