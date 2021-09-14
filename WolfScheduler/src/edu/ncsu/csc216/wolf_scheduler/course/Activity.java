@@ -225,8 +225,8 @@ public abstract class Activity implements Conflict {
 			if(firstMeetingDays.contains(allDays[i])
 					&& secondMeetingDays.contains(allDays[i])) {
 				for(int min = 0; min < 2400; min++) {
-					if((this.getStartTime() <= min && this.getEndTime() >= min)
-							&& (possibleConflictingActivity.getStartTime() <= min && possibleConflictingActivity.getEndTime() >= min)) {
+					if(this.getStartTime() <= min && this.getEndTime() >= min
+							&& possibleConflictingActivity.getStartTime() <= min && possibleConflictingActivity.getEndTime() >= min) {
 						throw new ConflictException();
 					}
 						
