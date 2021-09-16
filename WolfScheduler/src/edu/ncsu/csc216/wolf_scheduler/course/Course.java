@@ -85,6 +85,7 @@ public class Course extends Activity {
 	 * Sets the Course's name.
 	 * 
 	 * @param name the name of the Course
+	 * @throws IllegalArgumentException if the name is invalid
 	 */
 	private void setName(String name) {
 		if (name == null) {

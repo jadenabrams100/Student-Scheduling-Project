@@ -27,6 +27,7 @@ public class WolfScheduler {
 	/**
 	 * Constructs a WolfScheduler project and fills the catalog with Courses.
 	 * @param fileName the file with the courses and Activities.
+	 * @throws IllegalArgumentException if the file containing the records cannot be found
 	 */
 	public WolfScheduler(String fileName) {
 		schedule = new ArrayList<Activity>();
@@ -116,6 +117,7 @@ public class WolfScheduler {
 	 * @param name the course name
 	 * @param section the course section
 	 * @return whether the course was added to the schedule
+	 * @throws IllegalArgumentException if user is already enrolled in the course or its addition would cause a conflict
 	 */
 	public boolean addCourseToSchedule(String name, String section) {
 		Course courseToAdd = this.getCourseFromCatalog(name, section);
@@ -155,6 +157,7 @@ public class WolfScheduler {
 	/**
 	 * writes the schedule to a text file
 	 * @param fileName the name of the file to write to
+	 * @throws IllegalArgumentException if the file could not be saved
 	 */
 	public void exportSchedule(String fileName) {
 		try {

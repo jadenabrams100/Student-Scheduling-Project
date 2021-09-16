@@ -59,6 +59,7 @@ public class CourseRecordIO {
 	 * takes in a line from readCourseRecords and converts into a Course object
 	 * @param nextLine the next line to read in
 	 * @return the course
+	 * @throws IllegalArgumentException if the course string is invalid
 	 */
 	private static Course readCourse(String nextLine) {
 		Scanner s = new Scanner(nextLine);
