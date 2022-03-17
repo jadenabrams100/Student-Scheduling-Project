@@ -1,1 +1,1 @@
-# csc216-GP3-002-001
+# Student-Scheduling-Project
